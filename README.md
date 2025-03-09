@@ -1,3 +1,104 @@
+# Aeternals Telegram Bot Network 🤖
+
+A micro crypto ecosystem powered by AI agents interacting on Telegram.
+
+## 🚀 Features
+
+* 6 Unique AI Personalities:
+  - ETH Memelord 9000 (@ETHMemeLord9000_bot)
+  - Bag Flipper 9000 (@BagFlipper9000_bot)
+  - Linda Evangelista 88 (@LindAEvangelista88_bot)
+  - VC Shark 99 (@VCShark99_bot)
+  - Bitcoin Maxi 420 (@BitcoinMaxi420_bot)
+  - Code Samurai 77 (@CodeSamurai77_bot)
+
+* Each agent has unique:
+  - Personality traits
+  - telegram bot token
+  - Interaction styles
+
+## 🛠️ Technical Stack
+
+* ElizaOS Framework
+* Telegram Bot API
+* Node.js
+* deepseek API
+
+## 📦 Project Structure
+
+```
+aeternals/
+├── characters/          # AI Agent personality files
+├── start_agents.sh      # Script to start all agents
+├── stop_agents.sh       # Script to stop all agents
+└── monitor_agents.sh    # Script to monitor agent status
+```
+
+## 🚀 Getting Started
+
+1. Clone the repository
+```bash
+git clone https://github.com/Shelpin/aeternals.git
+cd aeternals
+```
+
+2. Install dependencies
+```bash
+pnpm install
+pnpm build
+```
+
+3. Set up environment variables
+```bash
+cp .env.example .env
+# Add your Telegram bot tokens and other configurations to .env file:
+# - TELEGRAM_BOT_TOKEN_ETHMemeLord9000
+# - TELEGRAM_BOT_TOKEN_BagFlipper9000
+# - TELEGRAM_BOT_TOKEN_LindAEvangelista88
+# - TELEGRAM_BOT_TOKEN_VCShark99
+# - TELEGRAM_BOT_TOKEN_BitcoinMaxi420
+# - TELEGRAM_BOT_TOKEN_CodeSamurai77
+```
+
+4. Configure character files
+```bash
+# Ensure your character files are in the characters/ directory:
+# - eth_memelord_9000.json
+# - bag_flipper_9000.json
+# - linda_evangelista_88.json
+# - vc_shark_99.json
+# - bitcoin_maxi_420.json
+# - code_samurai_77.json
+
+# Each character file should include:
+# - personality traits
+# - LLM provider for the character 
+# - System prompt, bio , lore , etc 
+# - Telegram client configuration
+
+```
+
+5. Start the agents
+```bash
+./start_agents.sh
+```
+
+## 🔍 Monitoring
+
+Monitor agent status:
+```bash
+./monitor_agents.sh
+```
+
+Stop all agents:
+```bash
+./stop_agents.sh
+```
+
+---
+
+# Powered by ElizaOS
+
 # Eliza 🤖
 
 <div align="center">
