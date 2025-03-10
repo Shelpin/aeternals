@@ -73,6 +73,217 @@ interface BotCharacter {
 - Personality-driven interactions
 - Natural language processing
 
+## Character Enhancement & Knowledge Integration
+
+### Character-Specific Enhancements
+
+1. **ETHMemeLord9000**
+```typescript
+const ethMemeLordProfile: EnhancedCharacter = {
+  core: {
+    name: "ETHMemeLord9000",
+    role: "Ethereum Enthusiast & Meme Creator",
+    background: "Early ETH adopter, DeFi expert, meme culture specialist",
+    expertise: ["Ethereum", "DeFi", "NFTs", "Meme Culture", "Trading"],
+    traits: ["Humorous", "Tech-Savvy", "Optimistic", "Trend-Aware"]
+  },
+  knowledge: {
+    primaryDomains: ["Ethereum Ecosystem", "DeFi Protocols", "NFT Markets"],
+    sources: [
+      { url: "https://ethereum.org/en/", updateFrequency: "daily" },
+      { url: "https://defillama.com/", updateFrequency: "hourly" },
+      { url: "https://etherscan.io/", updateFrequency: "realtime" }
+    ]
+  }
+};
+```
+
+2. **BitcoinMaxi420**
+```typescript
+const bitcoinMaxiProfile: EnhancedCharacter = {
+  core: {
+    name: "BitcoinMaxi420",
+    role: "Bitcoin Maximalist & Crypto Purist",
+    background: "Long-term Bitcoin holder, Lightning Network enthusiast",
+    expertise: ["Bitcoin", "Lightning Network", "Monetary Theory"],
+    traits: ["Passionate", "Skeptical of Altcoins", "Security-Focused"]
+  },
+  knowledge: {
+    primaryDomains: ["Bitcoin Protocol", "Lightning Network", "Austrian Economics"],
+    sources: [
+      { url: "https://bitcoin.org/", updateFrequency: "daily" },
+      { url: "https://mempool.space/", updateFrequency: "realtime" },
+      { url: "https://lightning.network/", updateFrequency: "daily" }
+    ]
+  }
+};
+```
+
+3. **CodeSamurai77**
+```typescript
+const codeSamuraiProfile: EnhancedCharacter = {
+  core: {
+    name: "CodeSamurai77",
+    role: "Blockchain Developer & Technical Expert",
+    background: "Smart contract auditor, protocol developer",
+    expertise: ["Smart Contracts", "Protocol Design", "Security"],
+    traits: ["Analytical", "Detail-Oriented", "Security-Conscious"]
+  },
+  knowledge: {
+    primaryDomains: ["Smart Contract Development", "Blockchain Security", "Protocol Design"],
+    sources: [
+      { url: "https://docs.soliditylang.org/", updateFrequency: "daily" },
+      { url: "https://github.com/aeternity", updateFrequency: "hourly" },
+      { url: "https://consensys.io/diligence/blog", updateFrequency: "daily" }
+    ]
+  }
+};
+```
+
+### Knowledge Integration Pipeline
+
+1. **Source Management**
+```typescript
+interface KnowledgeSourceConfig {
+  characters: {
+    [characterId: string]: {
+      sources: KnowledgeSource[];
+      updateSchedule: UpdateSchedule;
+      processingPriority: Priority;
+    }
+  };
+  
+  globalSources: {
+    [domain: string]: KnowledgeSource[];
+  };
+  
+  processingConfig: {
+    chunkSize: number;
+    overlapSize: number;
+    embeddingModel: string;
+    updateFrequency: UpdateFrequency;
+  };
+}
+```
+
+2. **Knowledge Processing Flow**
+```
+URL/Content Source
+      ↓
+Content Extraction
+      ↓
+Text Chunking & Processing
+      ↓
+Embedding Generation (Using ElizaOS's built-in embedding system)
+      ↓
+Vector Storage (Qdrant/Postgres with pgvector)
+      ↓
+Character-Specific Knowledge Base
+```
+
+### Enhanced RAG Memory System
+
+1. **Memory Types**
+```typescript
+interface CharacterMemory {
+  // Conversation memory
+  conversations: {
+    recent: ConversationThread[];  // Last 24 hours
+    significant: ConversationHighlight[];  // Important interactions
+    userSpecific: Map<UserId, UserInteraction[]>;
+  };
+  
+  // Knowledge memory
+  knowledge: {
+    factual: VectorStore;  // Embedded knowledge from sources
+    learned: LearnedConcept[];  // Insights from conversations
+    temporary: CacheStore;  // Short-term relevant info
+  };
+  
+  // Personality memory
+  personality: {
+    traits: PersonalityTrait[];
+    adaptations: BehaviorAdaptation[];
+    preferences: InteractionPreference[];
+  };
+}
+```
+
+2. **Memory Integration with Response Generation**
+```typescript
+class ResponseGenerator {
+  async generateResponse(input: Message, character: Character): Promise<Response> {
+    // 1. Gather context
+    const conversationMemory = await this.getRelevantConversations(input);
+    const knowledgeContext = await this.retrieveRelevantKnowledge(input);
+    const personalityContext = character.getPersonalityContext();
+    
+    // 2. Build response context
+    const context = this.buildContext({
+      conversation: conversationMemory,
+      knowledge: knowledgeContext,
+      personality: personalityContext,
+      currentState: await this.getCurrentState()
+    });
+    
+    // 3. Generate and refine response
+    const response = await this.generateInitialResponse(context);
+    const refinedResponse = await this.applyPersonalityFilters(response, character);
+    
+    // 4. Update memory
+    await this.updateMemory(input, response, context);
+    
+    return refinedResponse;
+  }
+}
+```
+
+### Implementation Approach
+
+1. **Character Enhancement Phase**
+   - Update all 6 character files with enhanced profiles
+   - Add knowledge source configurations
+   - Implement personality traits and behaviors
+   - Time: 1-2 hours
+
+2. **Knowledge Integration Phase**
+   - Set up knowledge ingestion pipeline
+   - Configure source crawling and processing
+   - Implement vector storage system
+   - Time: 2-3 hours
+
+3. **Memory System Phase**
+   - Implement RAG architecture
+   - Set up memory management
+   - Create context retrieval system
+   - Time: 2-3 hours
+
+4. **Integration & Testing Phase**
+   - Combine all systems
+   - Test with real conversations
+   - Optimize response generation
+   - Time: 1-2 hours
+
+### Success Criteria for Enhanced System
+
+1. **Character Depth**
+   - Each character maintains consistent personality
+   - Responses reflect knowledge domains
+   - Natural conversation style
+   - Appropriate use of domain expertise
+
+2. **Knowledge Integration**
+   - Up-to-date information from sources
+   - Relevant knowledge in responses
+   - Proper source attribution
+   - Regular knowledge updates
+
+3. **Memory Effectiveness**
+   - Consistent conversation context
+   - Relevant information recall
+   - Natural conversation flow
+   - Appropriate reference to past interactions
+
 ## Implementation Strategy
 
 ### Step 1: Basic Infrastructure (1-2 hours)
@@ -198,3 +409,178 @@ This accelerated timeline is possible because:
 - Effective user engagement
 - No system crashes or hangs
 - Clean process management 
+
+### Knowledge Storage & Retrieval System
+
+1. **SQLite-based Vector Storage**
+```typescript
+interface SQLiteVectorStore {
+  // Database schema
+  tables: {
+    embeddings: {
+      id: string;
+      text: string;
+      embedding: Buffer;  // Store embeddings as binary
+      source_url: string;
+      character_id: string;
+      timestamp: number;
+    },
+    chunks: {
+      id: string;
+      text: string;
+      source_url: string;
+      processed: boolean;
+      timestamp: number;
+    }
+  };
+  
+  // Methods
+  async storeEmbedding(text: string, embedding: number[], metadata: EmbeddingMetadata): Promise<void>;
+  async searchSimilar(query: string, limit: number): Promise<SearchResult[]>;
+  async pruneOldEmbeddings(maxAge: number): Promise<void>;
+}
+```
+
+2. **Simplified URL Knowledge Retrieval**
+```typescript
+class URLKnowledgeManager {
+  // URL content fetching
+  async fetchContent(url: string): Promise<string> {
+    const response = await fetch(url);
+    const html = await response.text();
+    return this.extractMainContent(html);
+  }
+  
+  // Content processing
+  async processURL(url: string, characterId: string): Promise<void> {
+    // 1. Fetch and extract content
+    const content = await this.fetchContent(url);
+    
+    // 2. Split into chunks
+    const chunks = this.splitIntoChunks(content, {
+      maxChunkSize: 500,
+      overlap: 50
+    });
+    
+    // 3. Store raw chunks
+    await this.storeChunks(chunks, url, characterId);
+    
+    // 4. Process chunks into embeddings (background)
+    this.scheduleEmbeddingGeneration(chunks, characterId);
+  }
+  
+  // Background processing
+  private async scheduleEmbeddingGeneration(chunks: string[], characterId: string): Promise<void> {
+    for (const chunk of chunks) {
+      // Use ElizaOS's built-in embedding system
+      const embedding = await this.generateEmbedding(chunk);
+      await this.vectorStore.storeEmbedding(chunk, embedding, {
+        characterId,
+        timestamp: Date.now()
+      });
+    }
+  }
+}
+```
+
+3. **Knowledge Update System**
+```typescript
+class KnowledgeUpdateManager {
+  // Update scheduling
+  private updateSchedules = new Map<string, UpdateConfig>();
+  
+  // Add URL to update schedule
+  async scheduleURLUpdate(url: string, frequency: UpdateFrequency): Promise<void> {
+    const schedule = {
+      url,
+      frequency,
+      lastUpdate: Date.now(),
+      nextUpdate: this.calculateNextUpdate(frequency)
+    };
+    this.updateSchedules.set(url, schedule);
+  }
+  
+  // Regular update check
+  async checkForUpdates(): Promise<void> {
+    const now = Date.now();
+    for (const [url, schedule] of this.updateSchedules.entries()) {
+      if (now >= schedule.nextUpdate) {
+        await this.updateURL(url);
+        schedule.lastUpdate = now;
+        schedule.nextUpdate = this.calculateNextUpdate(schedule.frequency);
+      }
+    }
+  }
+}
+```
+
+4. **Simple Query Interface**
+```typescript
+class KnowledgeQuery {
+  constructor(private vectorStore: SQLiteVectorStore) {}
+  
+  // Query knowledge base
+  async query(question: string, characterId: string): Promise<QueryResult> {
+    // 1. Generate question embedding
+    const questionEmbedding = await this.generateEmbedding(question);
+    
+    // 2. Find similar content
+    const results = await this.vectorStore.searchSimilar(questionEmbedding, 5);
+    
+    // 3. Build context from results
+    const context = this.buildContext(results);
+    
+    return {
+      context,
+      sources: results.map(r => r.source_url)
+    };
+  }
+}
+```
+
+### Implementation Notes
+
+1. **SQLite Advantages**
+   - Simple setup, no external dependencies
+   - Single file storage
+   - Built-in full-text search
+   - Efficient for our scale
+   - Easy backup and maintenance
+
+2. **URL Processing Strategy**
+   - Fetch content in background
+   - Process and store incrementally
+   - Update on schedule or demand
+   - Maintain source attribution
+
+3. **Memory Optimization**
+   - Prune old embeddings periodically
+   - Keep recent content in memory cache
+   - Background processing of updates
+   - Efficient binary storage of embeddings
+
+4. **Query Performance**
+   - Index frequently accessed content
+   - Cache common queries
+   - Batch embedding generation
+   - Progressive loading of results
+
+### Usage Example
+```typescript
+// Initialize systems
+const vectorStore = new SQLiteVectorStore('knowledge.db');
+const urlManager = new URLKnowledgeManager(vectorStore);
+const queryInterface = new KnowledgeQuery(vectorStore);
+
+// Add knowledge source
+await urlManager.processURL('https://ethereum.org/en/', 'ETHMemeLord9000');
+
+// Query knowledge
+const result = await queryInterface.query(
+  'What are the latest developments in Ethereum?',
+  'ETHMemeLord9000'
+);
+
+console.log('Context:', result.context);
+console.log('Sources:', result.sources);
+``` 
