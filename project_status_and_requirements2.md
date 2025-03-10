@@ -656,3 +656,49 @@ Create an engaging, autonomous multi-bot ecosystem within a Telegram group where
    - Backup and recovery
 
 Note: These v2 features should only be considered after successful implementation and stabilization of v1 core functionality. 
+
+## Knowledge System Requirements
+
+### Phase 1: Base Implementation
+- Bots operate with predefined character profiles and responses
+- No external knowledge integration required
+- Basic conversation management and state tracking
+- Character personalities defined in static configuration
+
+### Phase 2: Knowledge Integration (Optional)
+1. **SQLite-based Knowledge Store**
+   - Single SQLite database file for all knowledge storage
+   - Tables for embeddings and content chunks
+   - Efficient binary storage of embeddings
+   - Simple backup and maintenance
+
+2. **URL Knowledge Integration**
+   - Background fetching of content from specified URLs
+   - Content processing and chunking
+   - Scheduled updates based on source configuration
+   - Source attribution in responses
+
+3. **RAG System Integration**
+   - Integration with ElizaOS's embedding system
+   - Context-aware response generation
+   - Knowledge-enhanced character responses
+   - Memory management and pruning
+
+### Implementation Notes
+1. **Phase 1 to Phase 2 Migration**
+   - No breaking changes to existing functionality
+   - Gradual integration of knowledge features
+   - Backward compatibility maintained
+   - Optional activation per character
+
+2. **Performance Considerations**
+   - Background processing of knowledge updates
+   - Efficient storage and retrieval
+   - Caching of frequent queries
+   - Resource usage optimization
+
+3. **Success Criteria**
+   - Smooth transition from base to enhanced system
+   - No disruption to existing conversations
+   - Improved response quality with knowledge integration
+   - Maintainable and scalable knowledge base 
