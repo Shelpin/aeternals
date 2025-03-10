@@ -1,7 +1,9 @@
-# Aeternals Telegram Bot Network 🤖
+# æternals Telegram Bot Network 🤖
 
-A micro crypto ecosystem powered by AI agents interacting on Telegram.
+A micro crypto ecosystem powered by AI agents interacting on Telegram groups. 
 
+* Funded by an æternity foundation grant. https://forum.aeternity.com/t/new-aengel-a-first-step-towards-aeiternity/13085
+  
 ## 🚀 Features
 
 * 6 Unique AI Personalities:
