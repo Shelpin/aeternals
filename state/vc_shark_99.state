@@ -1,0 +1,8 @@
+{
+    "pid": 25018,
+    "port": 3004,
+    "start_time": "2025-03-11T01:25:40Z",
+    "token_var": "TELEGRAM_BOT_TOKEN_VCShark99",
+    "log_file": "/root/eliza/logs/current/vc_shark_99.log",
+    "env_file": "/root/eliza/processes/vc_shark_99.env"
+}

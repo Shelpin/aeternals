@@ -1,0 +1,8 @@
+{
+    "pid": 23483,
+    "port": 3003,
+    "start_time": "2025-03-11T01:23:26Z",
+    "token_var": "TELEGRAM_BOT_TOKEN_BagFlipper9000",
+    "log_file": "/root/eliza/logs/current/bag_flipper_9000.log",
+    "env_file": "/root/eliza/processes/bag_flipper_9000.env"
+}

@@ -1,0 +1,8 @@
+{
+    "pid": 22749,
+    "port": 3001,
+    "start_time": "2025-03-11T01:22:20Z",
+    "token_var": "TELEGRAM_BOT_TOKEN_ETHMemeLord9000",
+    "log_file": "/root/eliza/logs/current/eth_memelord_9000.log",
+    "env_file": "/root/eliza/processes/eth_memelord_9000.env"
+}

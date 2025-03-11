@@ -1,0 +1,8 @@
+{
+    "pid": 24254,
+    "port": 3005,
+    "start_time": "2025-03-11T01:24:33Z",
+    "token_var": "TELEGRAM_BOT_TOKEN_LindAEvangelista88",
+    "log_file": "/root/eliza/logs/current/linda_evangelista_88.log",
+    "env_file": "/root/eliza/processes/linda_evangelista_88.env"
+}
